@@ -13,13 +13,27 @@ public class UsuarioDAO {
         session = HibernateUtil.getSessionFactory().openSession();
 
     }
-    public void insert(Usuario usuario){
+
+    public void Inserir(Usuario o) {
         session.getTransaction().begin();
-        session.save(usuario);
+        session.save(o);
         session.getTransaction().commit();
     }
-    public List<Usuario> findAll(){
-      return session.createQuery("select u from Usuario u" ). list();
-      
+
+    public void Editar(Usuario usuario) {
+        session.getTransaction().begin();
+        session.update(usuario);
+        session.getTransaction().commit();
+    }
+
+    public List<Usuario> ListarTodos() {
+        List<Usuario> usuarios = session.createQuery("select u from Usuario u").list();//session.createQuery("from suario as u").list();
+        return usuarios;
+    }
+
+    public void Excluir(Usuario u) {
+        session.getTransaction().begin();
+        session.delete(u);
+        session.getTransaction().commit();
     }
 }

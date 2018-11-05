@@ -12,19 +12,30 @@ import model.Usuario;
 @SessionScoped
 public class UsuarioBean implements Serializable {
 
-    public UsuarioBean() {
-    }
-
-    public void insertAction() {
-        usuarioDAO.insert(usuario);
-    }
+    private boolean formAtivo = false;
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
-
     private Usuario usuario = new Usuario();
     private List<Usuario> usuarios = new ArrayList<>();
 
+    public UsuarioBean() {
+    }
+
+    public void Salvar() {
+        if (usuario.getCodusuario() > 0) {
+            usuarioDAO.Editar(usuario);
+        } else {
+            usuarioDAO.Inserir(usuario);
+        }
+        usuario = new Usuario();
+        getUsuarios();
+    }
+
     public Usuario getUsuario() {
         return usuario;
+    }
+
+    public void PreparaEdicao(Usuario o) {
+        this.usuario = o;        
     }
 
     public void setUsuario(Usuario usuario) {
@@ -32,14 +43,32 @@ public class UsuarioBean implements Serializable {
     }
 
     public List<Usuario> getUsuarios() {
-        if(this.usuarios == null){
-        this.usuarios = usuarioDAO.findAll();
-        }
-        return usuarios;
+        usuarios = usuarioDAO.ListarTodos();
+        return usuarioDAO.ListarTodos();
     }
 
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
 
+    public UsuarioDAO getUsuarioDAO() {
+        return usuarioDAO;
+    }
+
+    public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
+        this.usuarioDAO = usuarioDAO;
+    }
+
+    public void Excluir(Usuario usuario) {
+        usuarioDAO.Excluir(usuario);
+        //return "userio";
+    }
+
+    public boolean isFormAtivo() {
+        return formAtivo;
+    }
+
+    public void setFormAtivo(boolean formAtivo) {
+        this.formAtivo = formAtivo;
+    }
 }
