@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cadastro de Despesas</title>
+    </h:head>
+    <h:body>
+        <h1>Cadastro de Despesas</h1>
+        <br/>
+        <h:form>
+            <h:messages></h:messages>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Historico da Receita"/>
+                <h:inputText value="#{despesasBean.movimento.historico}"/>
+                <h:outputLabel value="Valor"/>
+                <h:inputText value="#{despesasBean.movimento.valor}"/>
+                <h:outputLabel value="Data Prevista"/>
+                <h:inputText value="#{despesasBean.movimento.dataprevista}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+                </h:inputText>
+                <h:outputLabel value="Data Realizada"/>
+                <h:inputText value="#{despesasBean.movimento.datarealizada}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+                </h:inputText>
+                <h:commandButton action="#{despesasBean.insertAction()}" value="Gravar">
+                    <f:ajax render="@form" execute="@form"/>
+                </h:commandButton>
+            </h:panelGrid>
+            <br/>
+            <br/>
+
+            <h:commandButton action ="#{despesasBean.atualizarAction()}" value="Atualizar">
+                <f:ajax render="@form" execute="tabela2"/>
+            </h:commandButton>
+
+            <p:dataTable value="#{despesasBean.movimentos}" var="item" id="tabela2">
+                <p:column headerText="Cod. Movimento">
+                    <h:outputText value="#{item.codmovimentacao}"/>
+                </p:column>
+                <p:column headerText="Data Prevista">
+                    <h:outputText value="#{item.dataprevista}"/>
+                </p:column>
+                <p:column headerText="Data Realizada">
+                    <h:outputText value="#{item.datarealizada}"/>
+                </p:column>
+                <p:column headerText="Valor">
+                    <h:outputText value="#{item.valor}"/>
+                </p:column>
+                <p:column headerText="Histórico">
+                    <h:outputText value="#{item.historico}"/>
+                </p:column>
+                
+                <p:column headerText="">
+                    <h:commandButton action="#{despesasBean.removeAction(item)}" value="Excluir" 
+                                     onclick="return confirm('Excluir Despesa?')">
+                        <f:ajax render="@form" execute="@form"/>
+                    </h:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
