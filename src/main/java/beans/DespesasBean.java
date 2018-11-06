@@ -25,6 +25,14 @@ public class DespesasBean implements Serializable {
         this.movimentos = movimentoDAO.findAll();
     }
 
+    public void selectItem(Movimento mov) {
+        this.movimento = mov;
+    }
+
+    public void limpaForm() {
+        this.movimento = new Movimento();
+    }
+
     public void removeAction(Movimento mov) {
         movimentoDAO.delete(mov);
         this.movimentos = movimentoDAO.findAll();

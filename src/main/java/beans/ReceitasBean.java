@@ -20,11 +20,20 @@ public class ReceitasBean implements Serializable {
         this.movimento = new Movimento();
         this.movimentos = movimentoDAO.findAll();
     }
-    public void atualizarAction(){
+
+    public void atualizarAction() {
         this.movimentos = movimentoDAO.findAll();
     }
-    
-    public void removeAction(Movimento mov){
+
+    public void selectItem(Movimento mov) {
+        this.movimento = mov;
+    }
+
+    public void limpaForm() {
+        this.movimento = new Movimento();
+    }
+
+    public void removeAction(Movimento mov) {
         movimentoDAO.delete(mov);
         this.movimentos = movimentoDAO.findAll();
     }
