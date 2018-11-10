@@ -11,4 +11,21 @@ public class Produtor implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codprodutor;
+    private String nome;
+
+    public int getCodprodutor() {
+        return codprodutor;
+    }
+
+    public void setCodprodutor(int codprodutor) {
+        this.codprodutor = codprodutor;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }

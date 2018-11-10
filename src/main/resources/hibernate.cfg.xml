@@ -45,11 +45,15 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/dbpratica</property>
     <property name="hibernate.connection.username">postgres</property>
-    <property name="hibernate.connection.password">postgres</property>
+    <property name="hibernate.connection.password">123</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="model.Usuario"/>
     <mapping class="model.Moeda"/>
     <mapping class="model.Pessoa"/>
+    <mapping class="model.Conta"/>
+    <mapping class="model.ContaSuperior"/>
+    <mapping class="model.Movimento"/>
+    <mapping class="model.Produtor"/>
   </session-factory>
 </hibernate-configuration>
