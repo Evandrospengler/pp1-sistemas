@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 @Entity
 public class Movimento implements Serializable {
@@ -13,7 +14,9 @@ public class Movimento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codmovimentacao;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataprevista;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date datarealizada;
     private double valor;
     private String historico;

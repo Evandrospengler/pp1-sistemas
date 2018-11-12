@@ -21,8 +21,14 @@
         <br/>
         <h:form>
             <h:panelGrid columns="2">
+                <h:outputLabel  value="Pessoa"/>
+                <h:inputText  value="#{receitasBean.movimento.pessoa}"/>
                 <h:outputLabel value="Historico da Receita"/>
                 <h:inputText value="#{receitasBean.movimento.historico}"/>
+                <h:outputLabel value="Tipo de Moeda"/>
+                <h:inputText value="#{receitasBean.movimento.moeda}"/>
+                <h:outputLabel  value="Conta"/>
+                <h:inputText  value="#{receitasBean.movimento.conta}"/>
                 <h:outputLabel value="Valor"/>
                 <h:inputText value="#{receitasBean.movimento.valor}"/>
                 <h:outputLabel value="Data Prevista"/>
@@ -45,17 +51,26 @@
             </h:commandButton>
 
             <p:dataTable value="#{receitasBean.movimentos}" var="item" id="tabela1">
+                <p:column headerText="Pessoa">
+                    <h:outputText value="#{item.pessoa}"/>
+                </p:column>
                 <p:column headerText="Cod. Movimento">
                     <h:outputText value="#{item.codmovimentacao}"/>
+                </p:column>
+                <p:column headerText="Moeda">
+                    <h:outputText value="#{item.moeda}"/>
+                </p:column>
+                <p:column headerText="Conta">
+                    <h:outputText value="#{item.conta}"/>
+                </p:column>
+                <p:column headerText="Valor">
+                    <h:outputText value="#{item.valor}"/>
                 </p:column>
                 <p:column headerText="Data Prevista">
                     <h:outputText value="#{item.dataprevista}"/>
                 </p:column>
                 <p:column headerText="Data Realizada">
                     <h:outputText value="#{item.datarealizada}"/>
-                </p:column>
-                <p:column headerText="Valor">
-                    <h:outputText value="#{item.valor}"/>
                 </p:column>
                 <p:column headerText="Histórico">
                     <h:outputText value="#{item.historico}"/>
