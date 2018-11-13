@@ -76,7 +76,8 @@
                     <h:outputText value="#{item.historico}"/>
                 </p:column>
                 
-                <p:column headerText="">
+                <p:column headerText="Opções">
+                    <h:commandButton action="#{despesasBean.selectItem(item)}" value="Editar"/>
                     <h:commandButton action="#{despesasBean.removeAction(item)}" value="Excluir" 
                                      onclick="return confirm('Excluir Despesa?')">
                         <f:ajax render="@form" execute="@form"/>
