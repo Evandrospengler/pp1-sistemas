@@ -18,11 +18,11 @@ public class ReceitasBean implements Serializable {
     public void insertAction() {
         movimentoDAO.insert(movimento);
         this.movimento = new Movimento();
-        this.movimentos = movimentoDAO.findAll();
+        this.movimentos = movimentoDAO.findAllReceitas();
     }
 
     public void atualizarAction() {
-        this.movimentos = movimentoDAO.findAll();
+        this.movimentos = movimentoDAO.findAllReceitas();
     }
 
     public void selectItem(Movimento mov) {
@@ -35,7 +35,7 @@ public class ReceitasBean implements Serializable {
 
     public void removeAction(Movimento mov) {
         movimentoDAO.delete(mov);
-        this.movimentos = movimentoDAO.findAll();
+        this.movimentos = movimentoDAO.findAllReceitas();
     }
 
     private MovimentoDAO movimentoDAO = new MovimentoDAO();
@@ -53,7 +53,7 @@ public class ReceitasBean implements Serializable {
 
     public List<Movimento> getMovimentos() {
         if (this.movimentos == null) {
-            this.movimentos = movimentoDAO.findAll();
+            this.movimentos = movimentoDAO.findAllReceitas();
         }
         return movimentos;
     }

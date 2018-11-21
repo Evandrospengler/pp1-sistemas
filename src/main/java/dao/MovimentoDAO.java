@@ -19,8 +19,8 @@ public class MovimentoDAO {
         session.save(movimento);
         session.getTransaction().commit();
     }
-    
-    public void delete(Movimento movimento){
+
+    public void delete(Movimento movimento) {
         session.getTransaction().begin();
         session.remove(movimento);
         session.getTransaction().commit();
@@ -28,5 +28,13 @@ public class MovimentoDAO {
 
     public List<Movimento> findAll() {
         return session.createQuery("select m from Movimento m").list();
+    }
+
+    public List<Movimento> findAllReceitas() {
+        return session.createQuery("select m from Movimento m where m.valor > 0").list();
+    }
+
+    public List<Movimento> findAllDespesas() {
+        return session.createQuery("select m from Movimento m where m.valor < 0").list();
     }
 }

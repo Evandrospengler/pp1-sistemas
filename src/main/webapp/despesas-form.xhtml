@@ -12,7 +12,7 @@
             <p:menuitem value="Inicio" outcome="index" />
             <p:menuitem value="Usuários" outcome="usuario" />
             <p:menuitem value="Pessoas" outcome="pessoa" />
-            <p:menuitem value="Moeda" outcome="moeda" />
+            <p:menuitem value="Moedas" outcome="moeda" />
             <p:menuitem value="Receitas" outcome="receitas-form" />
             <p:menuitem value="Despesas" outcome="despesas-form" />
 
@@ -20,24 +20,32 @@
    <hr></hr>
         <br/>
         <h:form>
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="3">
                 <h:outputLabel value="Pessoa"/>
-                <h:inputText value="#{receitasBean.movimento.pessoa}"/>
+                <h:inputText size="50" value="#{receitasBean.movimento.pessoa}"/>
+                <br></br>
                 <h:outputLabel value="Historico da Despesa"/>
-                <h:inputText value="#{despesasBean.movimento.historico}"/>
+                <h:inputText size="50" value="#{despesasBean.movimento.historico}"/>
+                <br></br>
                 <h:outputLabel value="Tipo de Moeda"/>
-                <h:inputText value="#{receitasBean.movimento.moeda}"/>
+                <h:inputText size="50" value="#{receitasBean.movimento.moeda}"/>
+                <br></br>
                 <h:outputLabel value="Conta"/>
-                <h:inputText value="#{receitasBean.movimento.conta}"/>
+                <h:inputText size="50" value="#{receitasBean.movimento.conta}"/>
+                <br></br>
                 <h:outputLabel value="Valor"/>
-                <h:inputText value="#{despesasBean.movimento.valor}"/>
+                <h:inputText size="50" value="#{despesasBean.movimento.valor}"/>
+                <br></br>
                 <h:outputLabel value="Data Prevista"/>
-                <h:inputText value="#{despesasBean.movimento.dataprevista}">
-                    <f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+                <h:inputText size="50" value="#{despesasBean.movimento.dataprevista}">
+                <br></br>
+                <f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
                 </h:inputText>
+                <br></br>
                 <h:outputLabel value="Data Realizada"/>
-                <h:inputText value="#{despesasBean.movimento.datarealizada}">
-                    <f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+                <h:inputText size="50" value="#{despesasBean.movimento.datarealizada}">
+                <br></br>
+                <f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
                 </h:inputText>
                 <h:commandButton action="#{despesasBean.insertAction()}" value="Gravar">
                     <f:ajax render="@form" execute="@form"/>
