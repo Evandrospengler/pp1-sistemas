@@ -30,12 +30,16 @@ public class UsuarioBean implements Serializable {
         getUsuarios();
     }
 
+    public void atualizarAction() {
+        this.usuarios = usuarioDAO.ListarTodos();
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
 
     public void PreparaEdicao(Usuario o) {
-        this.usuario = o;        
+        this.usuario = o;
     }
 
     public void setUsuario(Usuario usuario) {

@@ -37,6 +37,9 @@
                 <h:commandButton action="#{pessoaBean.Salvar()}" value="Gravar"/>    
             </h:panelGrid>
             <hr></hr>
+            <h:commandButton action ="#{pessoaBean.atualizarAction()}" value="Atualizar">
+                <f:ajax render="@form" execute="tabela"/>
+            </h:commandButton>
             <p:dataTable value="#{pessoaBean.getPessoas()}" var="item">
                 <p:column headerText="Cod">
                     <h:outputText value="#{item.codpessoa}"/>
@@ -58,7 +61,10 @@
                 </p:column>
                 <p:column headerText="Opções">
                     <h:commandButton action="#{pessoaBean.PreparaEdicao(item)}" value="Editar" />
-                    <h:commandButton action="#{pessoaBean.Excluir(item)}" value="Excluir" />
+                    <h:commandButton action="#{pessoaBean.Excluir(item)}" value="Excluir" 
+                                     onclick="return confirm('Excluir Pessoa?')">
+                        <f:ajax render="@form" execute="@form"/>
+                    </h:commandButton>
                 </p:column>   
             </p:dataTable>
         </h:form>

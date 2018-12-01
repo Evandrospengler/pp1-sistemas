@@ -24,10 +24,15 @@
                 <p:inputText size="50" value="#{moedaBean.moeda.descricao}"/>
                 <br></br>                
                 <br></br>
-                <h:commandButton action="#{moedaBean.Salvar()}" value="Gravar"/>    
+                <h:commandButton action="#{moedaBean.Salvar()}" value="Gravar">
+                    <f:ajax render="@form" execute="@form"/>
+                </h:commandButton>
             </h:panelGrid>
             <hr></hr>
-            <p:dataTable value="#{moedaBean.getMoedas()}" var="item">
+            <h:commandButton action ="#{moedaBean.atualizarAction()}" value="Atualizar">
+                <f:ajax render="@form" execute="tabela"/>
+            </h:commandButton>
+            <p:dataTable value="#{moedaBean.getMoedas()}" var="item" id="tabela">
                 <p:column headerText="Cod. Moeda">
                     <h:outputText value="#{item.codmoeda}"/>
                 </p:column>
@@ -36,7 +41,11 @@
                 </p:column>                
                 <p:column headerText="Opções">
                     <h:commandButton action="#{moedaBean.PreparaEdicao(item)}" value="Editar" />
-                    <h:commandButton action="#{moedaBean.Excluir(item)}" value="Excluir" />
+
+                    <h:commandButton action="#{moedaBean.Excluir(item)}" value="Excluir" 
+                                     onclick="return confirm('Excluir Moeda?')">
+                        <f:ajax render="@form" execute="@form"/>
+                    </h:commandButton>
                 </p:column>   
             </p:dataTable>
         </h:form>

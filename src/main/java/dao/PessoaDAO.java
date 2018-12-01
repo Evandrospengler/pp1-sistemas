@@ -8,6 +8,8 @@ import org.hibernate.Session;
 
 public class PessoaDAO {
 
+    public static List<Pessoa> ListarTodos;
+
     private Session session;
 
     public PessoaDAO() {

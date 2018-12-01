@@ -55,10 +55,10 @@
             <br/>
 
             <h:commandButton action ="#{despesasBean.atualizarAction()}" value="Atualizar">
-                <f:ajax render="@form" execute="tabela2"/>
+                <f:ajax render="@form" execute="tabela"/>
             </h:commandButton>
 
-            <p:dataTable value="#{despesasBean.movimentos}" var="item" id="tabela2">
+            <p:dataTable value="#{despesasBean.movimentos}" var="item" id="tabela">
                 <p:column headerText="Pessoa">
                     <h:outputText value="#{item.pessoa}"/>
                 </p:column>

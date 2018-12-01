@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package beans;
 
 import dao.PessoaDAO;
@@ -13,10 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Pessoa;
 
-/**
- *
- * @author Anderson
- */
 @Named(value = "pessoaBean")
 @SessionScoped
 public class PessoaBean implements Serializable {
@@ -35,6 +26,10 @@ public class PessoaBean implements Serializable {
             dao.Inserir(pessoa);
         }
         pessoa = new Pessoa();
+    }
+
+    public void atualizarAction() {
+        this.pessoas = dao.ListarTodos();
     }
 
     public void PreparaEdicao(Pessoa o) {
